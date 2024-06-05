@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 
+const userRouter = require('../router/userRouter');
+
 const app = express();
 //  use MW to parse incoming json data
 app.use(express.json());
@@ -17,6 +19,7 @@ app.get('/', (req, res, next) => {
 });
 
 // routes
+app.use('/api/v1/users', userRouter);
 
 // error handler for not found
 app.use((req, res, next) => {
