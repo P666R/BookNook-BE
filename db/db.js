@@ -1,3 +1,4 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 const User = require('../models/userModel');
 
@@ -11,12 +12,12 @@ const disconnect = async () => {
   console.log('Database disconnected...');
 };
 
-const findUser = async (obj) => {
-  return await User.findOne(obj);
-};
-
 const saveUser = async (newUser) => {
   return await newUser.save();
+};
+
+const findUser = async (obj) => {
+  return await User.findOne(obj);
 };
 
 module.exports = { connect, disconnect, findUser, saveUser };
