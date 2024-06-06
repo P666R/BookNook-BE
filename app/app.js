@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 
+const { connect } = require('../db/db');
 const userRouter = require('../router/userRouter');
 
 const app = express();
@@ -38,21 +39,6 @@ app.use((error, req, res, next) => {
   });
 });
 
+connect();
+
 module.exports = app;
-
-/*
- use MW to handle cors policy
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Content-Type, Accept, Authorization, Origin, X-Requestd-With'
-  );
-
-  if (req.method === 'OPTIONS') {
-    res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
-  }
-
-  next();
-});
-*/
